@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VYBE Music - Modern web music player featuring dynamic VYBE Mood detection and personalized music recommendation collections.">
+  <meta name="keywords" content="VYBE, mood music, music player, personalized playlists, music streaming, happy, chill, energetic, workout, late night">
+  <meta name="theme-color" content="#080A10">
+  <title>VYBE Music — Your VYBE Right Now | Personalized Mood Streaming</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- App Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Dynamic Ambient Glow Backdrop -->
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+    <div class="ambient-blob ambient-blob-3"></div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="navbar" id="topNavbar">
+      <a href="#" class="nav-brand" id="brandLogo">
+        <div class="brand-icon">
+          <div class="brand-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <span>VYBE</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item active"><a href="#home"><i class="fas fa-home" style="margin-right: 6px;"></i>Home</a></li>
+          <li class="nav-item"><a href="#vybeMoodSection"><i class="fas fa-compass" style="margin-right: 6px;"></i>VYBE Mood</a></li>
+          <li class="nav-item"><a href="#yourVybeRightNowSection"><i class="fas fa-sparkles" style="margin-right: 6px;"></i>Your VYBE</a></li>
+          <li class="nav-item"><a href="#trendingSection"><i class="fas fa-fire" style="margin-right: 6px;"></i>Trending</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Live Search Box -->
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search title, artist, mood... (Ctrl+K)" aria-label="Search music library" />
+        </div>
+
+        <!-- Current Active Mood Nav Pill -->
+        <div class="current-mood-nav-pill" id="currentMoodNavPill" title="Click to view VYBE Mood selector">
+          <div class="mood-dot-pulse"></div>
+          <span>😊 Happy</span>
+        </div>
+
+        <!-- Liked Songs Counter Pill -->
+        <div class="current-mood-nav-pill" id="likedNavCounter" title="Liked Songs" style="cursor: default;">
+          <i class="fas fa-heart" style="color: #EF4444; font-size: 0.85rem;"></i>
+          <span id="likedCountBadge">3</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Flow -->
+    <main id="mainContent">
+
+      <!-- Hero Banner Section -->
+      <section class="hero-section" id="home" aria-label="Welcome Banner">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <div class="feature-badge">
+              <i class="fas fa-bolt sparkle"></i> SPECIAL FEATURE — VYBE MOOD
+            </div>
+            <h1 class="hero-title">
+              Feel the Music, Live the <span class="gradient-text">VYBE</span>.
+            </h1>
+            <p class="hero-subtitle">
+              Music is an emotional journey. Choose how you feel right now, and our dynamic VYBE engine immediately adapts the atmosphere, tempo, and personalized soundscape to match your frequency.
+            </p>
+
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <span class="stat-label">Mood Modes</span>
+                <span class="stat-value">8 Curated Frequencies</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="stat-label">Active Library</span>
+                <span class="stat-value">32+ Handcrafted Tracks</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="stat-label">Engine</span>
+                <span class="stat-value">Live Web Audio Synth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURE: "VYBE MOOD" Selector Section -->
+      <section class="mood-selector-section" id="vybeMoodSection" aria-label="VYBE Mood Selector">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag"><i class="fas fa-wave-square" style="margin-right: 6px;"></i>Select Your State of Mind</span>
+            <h2 class="section-title">VYBE Mood</h2>
+            <p class="section-desc">Tap any mood card to dynamically re-tune your recommendations, atmosphere, and energy.</p>
+          </div>
+        </div>
+
+        <!-- Animated Modern Mood Cards Grid (Rendered by JS) -->
+        <div class="mood-cards-grid" id="moodCardsGrid">
+          <!-- Dynamically populated with 8 moods: Happy, Chill, Energetic, Sad, Late Night, Road Trip, Workout, Romantic -->
+        </div>
+      </section>
+
+      <!-- FEATURE: "Your VYBE right now" Personalized Showcase -->
+      <section class="personalized-showcase-section" id="yourVybeRightNowSection" aria-label="Your VYBE Right Now">
+        <div class="showcase-banner">
+          <div class="showcase-header-content">
+            <div class="showcase-info">
+              <div class="showcase-eyebrow">
+                <i class="fas fa-sparkles"></i> Personalized Music Collection
+              </div>
+              <h2 class="showcase-title" id="showcaseMoodTitle">
+                Your VYBE right now: <span class="mood-highlight">😊 Happy</span>
+              </h2>
+              <p class="showcase-desc" id="showcaseMoodDesc">
+                Uplifting melodies, buoyant brass, and vibrant rhythms to brighten your day and lift your spirits.
+              </p>
+
+              <!-- Mood Audio Stats Badges -->
+              <div class="mood-specs-row">
+                <div class="spec-badge">
+                  <i class="fas fa-bolt"></i>
+                  <span id="showcaseEnergy">90% Energy Level</span>
+                </div>
+                <div class="spec-badge">
+                  <i class="fas fa-tachometer-alt"></i>
+                  <span id="showcaseTempo">115 - 130 BPM</span>
+                </div>
+                <div class="spec-badge">
+                  <i class="fas fa-heartbeat"></i>
+                  <span id="showcaseValence">Joyful & Euphoric</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Showcase Action Buttons -->
+            <div class="showcase-actions">
+              <button class="btn-primary-mood" id="playAllVybeBtn" title="Start playing all songs in this mood">
+                <i class="fas fa-play"></i> Play All in this VYBE
+              </button>
+              <button class="btn-secondary-glass" id="shuffleVybeBtn" title="Shuffle songs in this mood">
+                <i class="fas fa-random"></i> Shuffle VYBE
+              </button>
+              <button class="btn-secondary-glass" id="savePlaylistBtn" title="Save this collection to your library">
+                <i class="fas fa-folder-plus"></i> Save as Playlist
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Genre Quick Filter Chips -->
+        <div class="genre-pills-bar" id="genrePillsBar">
+          <button class="genre-pill active" data-genre="all">All Genres</button>
+          <button class="genre-pill" data-genre="Pop">Pop</button>
+          <button class="genre-pill" data-genre="Electronic">Electronic / EDM</button>
+          <button class="genre-pill" data-genre="Lo-Fi">Lo-Fi / Downtempo</button>
+          <button class="genre-pill" data-genre="Soul">Soul / R&B</button>
+          <button class="genre-pill" data-genre="Rock">Rock / Folk</button>
+          <button class="genre-pill" data-genre="Acoustic">Acoustic</button>
+        </div>
+
+        <!-- Dynamically Filtered Songs Grid -->
+        <div class="songs-grid" id="personalizedSongsGrid">
+          <!-- Dynamically populated songs -->
+        </div>
+      </section>
+
+      <!-- Trending Section -->
+      <section class="secondary-section" id="trendingSection" aria-label="Trending on VYBE">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag"><i class="fas fa-fire" style="margin-right: 6px;"></i>Community Favourites</span>
+            <h2 class="section-title">Trending Across All VYBEs</h2>
+            <p class="section-desc">The most streamed anthems across our community today.</p>
+          </div>
+        </div>
+        <div class="songs-grid" id="trendingSongsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Featured Artists Section -->
+      <section class="secondary-section" id="artistsSection" aria-label="Popular Artists">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-tag"><i class="fas fa-microphone-alt" style="margin-right: 6px;"></i>Curators & Musicians</span>
+            <h2 class="section-title">Top VYBE Artists</h2>
+            <p class="section-desc">Pioneers behind the evocative sonic landscapes.</p>
+          </div>
+        </div>
+        <div class="artists-row" id="artistsRow">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Sticky Bottom Audio Player Bar -->
+    <footer class="player-bar" id="playerBar" role="region" aria-label="Audio Player">
+
+      <!-- Left: Track Information -->
+      <div class="player-track-info">
+        <div class="player-thumb-wrap">
+          <img id="playerThumb" class="player-thumb" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300" alt="Current Track Album Art" />
+        </div>
+        <div class="player-details">
+          <span class="player-title" id="playerTitle">Sunburst Golden Hour</span>
+          <span class="player-artist" id="playerArtist">Aura Bloom</span>
+          <div class="player-mood-indicator" id="playerMoodBadge">
+            <span>😊</span> Happy
+          </div>
+        </div>
+        <button class="player-like-btn" id="playerLikeBtn" title="Save to Liked Songs">
+          <i class="far fa-heart"></i>
+        </button>
+      </div>
+
+      <!-- Center: Controls & Scrubber -->
+      <div class="player-controls-center">
+        <div class="player-buttons">
+          <button class="control-btn" id="shuffleBtn" title="Toggle Shuffle"><i class="fas fa-random"></i></button>
+          <button class="control-btn" id="prevBtn" title="Previous Track"><i class="fas fa-step-backward"></i></button>
+          <button class="play-pause-btn" id="playPauseBtn" title="Play or Pause Track"><i class="fas fa-play"></i></button>
+          <button class="control-btn" id="nextBtn" title="Next Track"><i class="fas fa-step-forward"></i></button>
+          <button class="control-btn" id="repeatBtn" title="Toggle Repeat"><i class="fas fa-redo"></i></button>
+        </div>
+
+        <div class="player-timeline">
+          <span class="time-stamp" id="currentTimeLabel">0:00</span>
+          <div class="scrubber-track" id="scrubberTrack" title="Seek Audio">
+            <div class="scrubber-fill" id="scrubberFill"></div>
+            <div class="scrubber-thumb" id="scrubberThumb"></div>
+          </div>
+          <span class="time-stamp" id="durationLabel">3:24</span>
+        </div>
+      </div>
+
+      <!-- Right: Real-time Audio Visualizer, Volume & Queue -->
+      <div class="player-right-tools">
+        <!-- Live Dancing Frequency Visualizer Canvas -->
+        <div class="visualizer-container" title="Live Audio Visualizer">
+          <canvas id="audioVisualizerCanvas" width="80" height="32"></canvas>
+        </div>
+
+        <!-- Volume Control -->
+        <div class="volume-group">
+          <button class="volume-btn" id="volumeBtn" title="Mute/Unmute"><i class="fas fa-volume-up"></i></button>
+          <div class="volume-slider-track" id="volumeSliderTrack" title="Adjust Volume">
+            <div class="volume-slider-fill" id="volumeSliderFill"></div>
+          </div>
+        </div>
+
+        <!-- Queue Drawer Toggle -->
+        <button class="queue-toggle-btn" id="queueToggleBtn" title="Open Playback Queue">
+          <i class="fas fa-list-ul"></i>
+          <span class="queue-badge-count" id="queueCountBadge">0</span>
+        </button>
+      </div>
+
+    </footer>
+
+    <!-- Slide-over Queue Panel -->
+    <aside class="queue-panel" id="queuePanel" aria-label="Current Playback Queue">
+      <div class="queue-header">
+        <h3 class="queue-title">Current Queue</h3>
+        <button class="queue-clear-btn" id="queueClearBtn">Clear</button>
+      </div>
+      <div class="queue-list" id="queueList">
+        <!-- Rendered by JS -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Save Playlist Modal Dialog -->
+  <div class="modal-overlay" id="playlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Modal">&times;</button>
+      <h3 class="modal-title" id="modalTitle">Save VYBE Playlist</h3>
+      <p class="modal-subtitle">Save this personalized mood selection to your personal library.</p>
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+        <label for="playlistNameInput" style="font-size: 0.85rem; color: var(--text-secondary);">Playlist Name</label>
+        <input type="text" id="playlistNameInput" value="My Happy VYBE Mix" style="padding: 0.75rem 1rem; background: rgba(255,255,255,0.06); border: 1px solid var(--border-light); border-radius: 8px; color: #fff; font-family: var(--font-body); font-size: 0.95rem; outline: none;" />
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button class="btn-secondary-glass" onclick="document.getElementById('playlistModal').classList.remove('active')">Cancel</button>
+        <button class="btn-primary-mood" id="confirmSavePlaylistBtn">Save Playlist</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/mockData.js"></script>
+  <script src="js/audioEngine.js"></script>
+  <script src="js/moodManager.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* ==========================================================================
+   VYBE Design System - Variables & Tokens
+   ========================================================================== */
+
+:root {
+  /* Surface & Background Dark Palette */
+  --bg-deep: #080A10;
+  --bg-main: #0D101A;
+  --bg-card: rgba(18, 23, 37, 0.75);
+  --bg-card-hover: rgba(26, 33, 53, 0.85);
+  --bg-glass: rgba(13, 16, 26, 0.72);
+  --bg-glass-elevated: rgba(22, 28, 46, 0.85);
+  --bg-active-pill: rgba(255, 255, 255, 0.12);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(255, 255, 255, 0.28);
+
+  /* Typography Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #0A0D14;
+
+  /* Dynamic Active Mood State (Default: Happy) */
+  --mood-accent: #F59E0B;
+  --mood-accent-light: #FDE68A;
+  --mood-gradient: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  --mood-glow: rgba(245, 158, 11, 0.35);
+  --mood-bg-tint: rgba(245, 158, 11, 0.08);
+
+  /* Static Brand Accents */
+  --brand-primary: #6366F1;
+  --brand-gradient: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+  --brand-cyan: #06B6D4;
+  --brand-emerald: #10B981;
+
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-mood: 0 12px 36px var(--mood-glow);
+
+  /* Layout Dimensions */
+  --sidebar-width: 250px;
+  --player-height: 88px;
+  --header-height: 72px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 20px;
+  --border-radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
